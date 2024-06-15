@@ -1,0 +1,3 @@
+For a TWSBR we will need an ESP32/8266 with H bridge Motor Driver, MPU-6050 sensor, 2 DC Encoder geared motors and a rigid frame 
+We would need to control the whole robot with the PID Algorithm
+The negative feedback would be provided by our microcontroller and encoder dc motors
