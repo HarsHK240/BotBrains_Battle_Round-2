@@ -1,3 +1,13 @@
-For a TWSBR we will need an ESP32/8266 with H bridge Motor Driver, MPU-6050 sensor, 2 DC Encoder geared motors and a rigid frame 
+For a TWSBR we will need an ESP32/8266 with H bridge Motor Driver, MPU-6050 sensor, 2 DC Encoder geared motors, battery and a rigid frame 
 We would need to control the whole robot with the PID Algorithm
 The negative feedback would be provided by our microcontroller and encoder dc motors
+
+Kp, Ki, Kd will be denoted as the coefficients for the proportional, integral, and derivative terms respectively
+We will need to tweak the values of all three constants to prevent our twsbr from tumbling and overshooting in any direction
+(I was not able to attach any pictures to this)
+U(t) = Kp*e(t) + Ki*integral(e(t)) + Kd*derivative(e(t))
+U(t) = Kp*(e(t) + (1/Ti)*integral(e(t)) + Td*derivative(e(t)))
+
+Ti and Td are Integral time and Derivative time respectively
+
+With correct configuration and pin arrangment we will be able to control a twsbr 
