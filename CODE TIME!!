@@ -1,0 +1,61 @@
+#include <Servo.h>
+
+const int soilMoisturePin = A0;
+const int pumpPin = 9;
+const int potPin=A1; // potentiometer pin
+const int buzzer= 5;
+const int led = 6;
+const int button = 2; 
+Servo servoMotor;
+int buttonState = 0;
+
+void setup() {
+  pinMode(soilMoisturePin, INPUT);
+  pinMode(pumpPin, OUTPUT);
+  pinMode(potPin, INPUT);
+  servoMotor.attach(10);
+  pinMode(buzzer,OUTPUT);
+  pinMode(led,OUTPUT);
+  pinMode(button, INPUT);
+  
+}
+
+void loop() {
+  
+  buttonState = digitalRead(button);
+  
+  
+  
+  int soilMoisture = analogRead(soilMoisturePin);
+  int threshold= analogRead(potPin);
+  
+  if (buttonState== HIGH) //Procces will only take place when button is pressed after sleep mode
+   
+  {  
+  if (soilMoisture < threshold) {
+    tone(buzzer,1000);
+    digitalWrite(led,HIGH);
+    delay(100);
+    noTone(buzzer);
+    digitalWrite(led,LOW);
+    delay(100);
+    
+    digitalWrite(pumpPin, HIGH);
+    servoMotor.write(90);
+    delay(5000);           // Watering duration
+    digitalWrite(pumpPin, LOW);
+    servoMotor.write(0);
+    
+    tone(buzzer,1000);
+    digitalWrite(led,HIGH);
+    delay(100);
+    noTone(buzzer);
+    digitalWrite(led,LOW);
+    delay(100);
+  }
+  }
+  
+  
+  delay(1000); // Check soil moisture every second
+}
+
