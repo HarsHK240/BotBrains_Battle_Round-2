@@ -1,0 +1,8 @@
+(a)
+Maximum Tilt of the twsbr depends on the constants kp,kd,ki used while calculating pid control of our robot.
+
+(b)
+Self-balancing robot is based on the principle of Inverted pendulum, which is a two wheel vehicle balances itself up in the vertical position with reference to the ground. 
+It is controlled using PID controll system.
+
+(c)
